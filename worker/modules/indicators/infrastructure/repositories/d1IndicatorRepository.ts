@@ -39,8 +39,8 @@ export class D1IndicatorRepository {
     if (observations.length === 0) return 0;
 
     let written = 0;
-    // D1 batch size — keep chunks modest
-    const chunkSize = 40;
+    // D1 allows ≤100 bound parameters per statement; 7 cols ⇒ max 14 rows.
+    const chunkSize = 12;
     for (let i = 0; i < observations.length; i += chunkSize) {
       const chunk = observations.slice(i, i + chunkSize);
       await this.db
