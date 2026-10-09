@@ -52,20 +52,38 @@ Open the URL printed by Vite. `GET /health` → `{"status":"ok"}`.
 | `pnpm db:migrate:remote` | Remote D1 (preview/production binding) |
 | `pnpm ingest` | Idempotent refresh via Wrangler platform proxy |
 | `pnpm test` | Vitest (mappers, variation, formatting) |
-| `pnpm deploy` | Build + `wrangler deploy` |
+| `pnpm preview` | Build + Cloudflare Worker Preview (`wrangler preview`) |
+| `pnpm preview:local` | Serve the production build locally (`vite preview`) |
+| `pnpm preview:delete` | Delete the current branch Preview |
+| `pnpm deploy` | Build + production `wrangler deploy` |
+
+### Preview deploys
+
+`pnpm run preview` builds the app and creates/updates a [Worker Preview](https://developers.cloudflare.com/workers/previews/) for the current git branch (isolated URL + bindings from the `previews` block in `wrangler.json`).
+
+```bash
+pnpm run preview                         # name defaults to current branch
+pnpm run preview -- --name pr-42         # explicit Preview name (e.g. CI)
+pnpm run preview -- --json               # machine-readable URLs for CI comments
+PREVIEW_MESSAGE="fix IPC card" pnpm run preview
+pnpm run preview:delete                  # remove Preview for this branch
+```
+
+Requires Wrangler ≥ 4.135 and Cloudflare auth (`wrangler login` or `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID`). In Workers Builds, set the Preview command to `pnpm run preview`.
 
 ### Environments
 
-`wrangler.json` binds D1 as `DB`, with separate `database_id` / `preview_database_id`. Cron: `0 6 * * *` UTC → `refreshIndicators`. On source failure, prior rows are kept and other indicators continue.
+`wrangler.json` binds production D1 as `DB` (`database_id`) and Preview D1 under `previews.d1_databases` (`espana-en-datos-preview`). Cron: `0 6 * * *` UTC → `refreshIndicators` (production only). On source failure, prior rows are kept and other indicators continue.
 
-Create real D1 databases before production deploy:
+Create real D1 databases before production / preview deploy:
 
 ```bash
 pnpm wrangler d1 create espana-en-datos
 pnpm wrangler d1 create espana-en-datos-preview
-# paste IDs into wrangler.json, then:
+# paste IDs into wrangler.json (top-level + previews.d1_databases), then:
 pnpm db:migrate:remote
-pnpm deploy
+pnpm deploy            # production
+pnpm run preview       # branch Preview
 ```
 
 ## tRPC
