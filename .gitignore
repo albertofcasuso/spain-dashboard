@@ -6,4 +6,5 @@ dist
 *.log
 coverage
 .vite
+*.tsbuildinfo
 worker-configuration.d.ts
