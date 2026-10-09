@@ -17,7 +17,7 @@ React View ◄── ViewModel ◄── tRPC client + TanStack Query ◄── 
 ```
 
 - **Frontend:** Feature-Sliced Design + MVVM. Views do not import tRPC; ViewModels (`useIndicatorsViewModel`, `useIndicatorSeriesViewModel`) own queries, formatting, and chart data. Remote state via TanStack Query through the official `@trpc/react-query` integration.
-- **Backend:** FSD + pragmatic DDD under `worker/modules/indicators/{domain,application,infrastructure,api}`. Domain has no Hono/tRPC/D1/INE deps. HTTP surface is the Worker `fetch` handler + tRPC (`/api/trpc/*`). No Hono.
+- **Backend:** FSD + pragmatic DDD under `worker/modules/indicators/{domain,application,infrastructure,api}`. Domain has no tRPC/D1/INE deps. HTTP surface is the Worker `fetch` handler + tRPC (`/api/trpc/*`). No Hono — tRPC on the Worker, tRPC + TanStack Query on the frontend.
 - **Reads:** Browser → tRPC → D1 only. **Writes:** Cron / `pnpm ingest` → adapters → D1.
 
 ## Official series
@@ -56,14 +56,14 @@ Open the URL printed by Vite. `GET /health` → `{"status":"ok"}`.
 
 ### Environments
 
-`wrangler.toml` binds D1 as `DB`, with separate `database_id` / `preview_database_id`. Cron: `0 6 * * *` UTC → `refreshIndicators`. On source failure, prior rows are kept and other indicators continue.
+`wrangler.json` binds D1 as `DB`, with separate `database_id` / `preview_database_id`. Cron: `0 6 * * *` UTC → `refreshIndicators`. On source failure, prior rows are kept and other indicators continue.
 
 Create real D1 databases before production deploy:
 
 ```bash
 pnpm wrangler d1 create espana-en-datos
 pnpm wrangler d1 create espana-en-datos-preview
-# paste IDs into wrangler.toml, then:
+# paste IDs into wrangler.json, then:
 pnpm db:migrate:remote
 pnpm deploy
 ```
