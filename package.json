@@ -29,14 +29,6 @@
     "react-router-dom": "^7.9.1",
     "zod": "^4.1.11"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "workerd",
-      "@esbuild/linux-x64",
-      "@cloudflare/workerd-linux-64"
-    ]
-  },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.13.2",
     "@cloudflare/workers-types": "^4.20250927.0",

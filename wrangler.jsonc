@@ -16,9 +16,7 @@
     }
   ],
   "triggers": {
-    "crons": [
-      "0 6 * * *"
-    ]
+    "crons": ["0 6 * * *"]
   },
   "vars": {
     "APP_NAME": "España en Datos"
@@ -34,6 +32,6 @@
         "database_id": "2a77484d-b03e-497d-aefd-070dfdc17e02",
         "migrations_dir": "migrations"
       }
-    ],
+    ]
   }
 }

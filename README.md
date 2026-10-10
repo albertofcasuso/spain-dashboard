@@ -56,17 +56,18 @@ Open the URL printed by Vite. `GET /health` → `{"status":"ok"}`.
 
 ### Environments
 
-`wrangler.json` binds D1 as `DB`, with separate `database_id` / `preview_database_id`. Cron: `0 6 * * *` UTC → `refreshIndicators`. On source failure, prior rows are kept and other indicators continue.
+`wrangler.jsonc` binds D1 as `DB` (`.jsonc` avoids a `tsx` resolver clash with the `wrangler` npm package). Cron: `0 6 * * *` UTC → `refreshIndicators`. On source failure, prior rows are kept and other indicators continue.
 
 Create real D1 databases before production deploy:
 
 ```bash
-pnpm wrangler d1 create espana-en-datos
-pnpm wrangler d1 create espana-en-datos-preview
-# paste IDs into wrangler.json, then:
+pnpm wrangler d1 create spain-dashboard
+pnpm wrangler d1 create spain-dashboard-preview
+# paste IDs into wrangler.jsonc, then:
 pnpm db:migrate:remote
 pnpm deploy
 ```
+
 
 ## tRPC
 

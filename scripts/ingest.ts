@@ -1,9 +1,12 @@
 /**
  * Local / CI ingest: pulls official INE + BdE series into local D1 via Wrangler proxy.
  * Usage: pnpm db:migrate && pnpm ingest
+ *
+ * Config must be `wrangler.jsonc` (not `wrangler.json`): under `tsx`, the bare
+ * specifier `wrangler` otherwise resolves to `./wrangler.json` and breaks this import.
  */
-import { drizzle } from "drizzle-orm/d1";
 import { getPlatformProxy } from "wrangler";
+import { drizzle } from "drizzle-orm/d1";
 import { refreshIndicators } from "../worker/modules/indicators/application/refreshIndicators";
 import * as schema from "../worker/modules/indicators/infrastructure/db/schema";
 import { D1IndicatorRepository } from "../worker/modules/indicators/infrastructure/repositories/d1IndicatorRepository";
