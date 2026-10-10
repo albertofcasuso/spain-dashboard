@@ -22,5 +22,18 @@
   },
   "vars": {
     "APP_NAME": "España en Datos"
+  },
+  "previews": {
+    "vars": {
+      "APP_NAME": "España en Datos"
+    },
+    "d1_databases": [
+      {
+        "binding": "DB",
+        "database_name": "spain-dashboard",
+        "database_id": "2a77484d-b03e-497d-aefd-070dfdc17e02",
+        "migrations_dir": "migrations"
+      }
+    ],
   }
 }
