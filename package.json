@@ -8,14 +8,15 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "deploy": "pnpm build && wrangler deploy",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "wrangler d1 migrations apply DB --local",
     "db:migrate:remote": "wrangler d1 migrations apply DB --remote",
     "ingest": "tsx scripts/ingest.ts",
     "test": "vitest run",
     "test:watch": "vitest",
-    "typecheck": "tsc -b --pretty false"
+    "typecheck": "tsc -b --pretty false",
+    "deploy": "pnpm build && wrangler deploy --config dist/spain_dashboard/wrangler.json",
+    "deploy:preview": "pnpm build && wrangler preview --config dist/spain_dashboard/wrangler.json"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.2",
