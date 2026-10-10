@@ -1,0 +1,29 @@
+.header {
+  padding: clamp(2.5rem, 8vw, 5.5rem) 0 1.5rem;
+}
+
+.inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.brand {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 8vw, 5.2rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+  max-width: 12ch;
+  animation: fade-up 0.7s ease both;
+}
+
+.tagline {
+  margin: 1.15rem 0 0;
+  max-width: 34rem;
+  color: var(--ink-soft);
+  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+  line-height: 1.45;
+  animation: fade-up 0.7s ease 0.08s both;
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "spain-dashboard",
+  "compatibility_date": "2025-10-01",
+  "main": "./worker/index.ts",
+  "assets": {
+    "not_found_handling": "single-page-application",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "spain-dashboard",
+      "database_id": "2a77484d-b03e-497d-aefd-070dfdc17e02",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "triggers": {
+    "crons": ["0 6 * * *"]
+  },
+  "vars": {
+    "APP_NAME": "España en Datos"
+  },
+  "previews": {
+    "vars": {
+      "APP_NAME": "España en Datos"
+    },
+    "d1_databases": [
+      {
+        "binding": "DB",
+        "database_name": "spain-dashboard",
+        "database_id": "2a77484d-b03e-497d-aefd-070dfdc17e02",
+        "migrations_dir": "migrations"
+      }
+    ]
+  }
+}

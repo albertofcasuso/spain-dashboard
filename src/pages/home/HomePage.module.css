@@ -1,0 +1,31 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  max-width: var(--max);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.indicators {
+  margin-top: 1.25rem;
+}
+
+.footer {
+  border-top: 1px solid var(--line);
+  margin-top: auto;
+  padding: 1.5rem 1.25rem 2.5rem;
+}
+
+.footer p {
+  max-width: var(--max);
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}

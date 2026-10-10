@@ -1,0 +1,85 @@
+.card {
+  border-top: 1px solid var(--line);
+  padding: 1.35rem 0 1.5rem;
+  animation: fade-up 0.55s ease both;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.source {
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.value {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.number {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.unit {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.variation {
+  margin: 0.55rem 0 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.variation[data-tone="up"] {
+  color: var(--up);
+}
+
+.variation[data-tone="down"] {
+  color: var(--down);
+}
+
+.period {
+  margin: 0.7rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.period strong {
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+.dataType {
+  color: var(--warn);
+}
+
+.empty {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}

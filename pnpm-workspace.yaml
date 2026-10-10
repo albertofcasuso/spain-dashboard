@@ -1,0 +1,8 @@
+packages:
+  - "."
+
+onlyBuiltDependencies:
+  - esbuild
+  - workerd
+  - "@esbuild/linux-x64"
+  - "@cloudflare/workerd-linux-64"
