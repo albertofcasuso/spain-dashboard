@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "espana-en-datos",
+  "name": "spain-dashboard",
   "compatibility_date": "2025-10-01",
   "main": "./worker/index.ts",
   "assets": {
@@ -10,14 +10,15 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "espana-en-datos",
-      "database_id": "00000000-0000-0000-0000-000000000001",
-      "migrations_dir": "migrations",
-      "preview_database_id": "00000000-0000-0000-0000-000000000002"
+      "database_name": "spain-dashboard",
+      "database_id": "2a77484d-b03e-497d-aefd-070dfdc17e02",
+      "migrations_dir": "migrations"
     }
   ],
   "triggers": {
-    "crons": ["0 6 * * *"]
+    "crons": [
+      "0 6 * * *"
+    ]
   },
   "vars": {
     "APP_NAME": "España en Datos"
